@@ -1,21 +1,28 @@
-import React from "react";
+// Importing React
+import React from 'react';
 
-function Table({ plates = [] }) {
-  // renders an empty plate for every element in the array
+// Table component to display the plates and budget
+function Table({ plates, budget }) {
+  // Mapping through the plates array to create an array of divs representing empty plates
+  // Each plate has a unique key based on its index
   const emptyPlates = plates.map((_, index) => (
     <div key={index} className="empty-plate" style={{ top: -7 * index }} />
   ));
 
+  // Render the budget and the stacked plates
   return (
     <>
       <h1 className="remaining">
-        You have: ${/* Give me how much money I have left */} remaining!
+        You have: ${budget} remaining!
       </h1>
       <div className="table">
-        <div className="stack">{emptyPlates}</div>
+        <div className="stack">
+          {emptyPlates}
+        </div>
       </div>
     </>
   );
 }
 
+// Exporting Table for use in other components
 export default Table;
